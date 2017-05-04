@@ -16,6 +16,4 @@ import { TwoChildComponent } from './two-child/two-child.component';
   exports: [DummyTwoComponent]
 })
 
-export class FeatureTwoModule {
-  constructor(private restBaseService:RestBaseService<Address>) {}
-}
+export class FeatureTwoModule { }

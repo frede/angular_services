@@ -16,6 +16,4 @@ import { OneChildComponent } from './one-child/one-child.component';
   exports: [DummyOneComponent]
 })
 
-export class FeatureOneModule {
-  constructor(private restBaseService:RestBaseService<Contact>) {}
-}
+export class FeatureOneModule { }
