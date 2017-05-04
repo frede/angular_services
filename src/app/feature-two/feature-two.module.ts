@@ -13,15 +13,13 @@ import { RestBaseService } from '../services/rest-base.service';
   ],
   declarations: [],
   providers: [
-    { 
-      provide: RestBaseService, 
-      useFactory: (http:Http) => new RestBaseService<Address>(http, 'http://127.0.0.1:4201/api/search?text=pa'),
-      deps: [Http]
-    }
+    RestBaseService
   ]
 })
 
 export class FeatureTwoModule {
-  constructor(private restBaseService:RestBaseService<Address>) { 
-    this.restBaseService.getItems().subscribe(items => console.log('FeatureTwoModule here: ', items)  );
+  constructor(private restBaseService:RestBaseService<Address>,
+              private http:Http) { 
+    this.restBaseService.apiEndpoint = 'http://127.0.0.1:4201/api/search?text=pa';
+    this.restBaseService.getItems().subscribe(items => console.log('FeatureTwoModule here: ', items));
 } }

@@ -5,9 +5,10 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RestBaseService<T> {
+  apiEndpoint:string; 
 
-  constructor(private http: Http, private apiEndpoint:string) { 
-    console.log('RestBaseService created')
+  constructor(private http: Http) { 
+    console.log('RestBaseService created', this.apiEndpoint)
   }
 
   getItem(identifier: number | string):Observable<T> {

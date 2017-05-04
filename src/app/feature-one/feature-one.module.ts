@@ -12,16 +12,14 @@ import { RestBaseService } from '../services/rest-base.service';
   ],
   declarations: [],
   providers: [
-    { 
-      provide: RestBaseService, 
-      useFactory: (http:Http) => new RestBaseService<Contact>(http, 'http://127.0.0.1:4201/api/contacts'),
-      deps: [Http]
-    }
+    RestBaseService
   ]
 })
 
 export class FeatureOneModule { 
-  constructor(private restBaseService:RestBaseService<Contact>) { 
+
+  constructor(private restBaseService:RestBaseService<Contact>, private http:Http) { 
+    this.restBaseService.apiEndpoint= 'http://127.0.0.1:4201/api/contacts';
     this.restBaseService.getItems().subscribe(items => console.log('FeatureOneModule here: ', items)  );
     
   }

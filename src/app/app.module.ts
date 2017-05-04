@@ -19,11 +19,9 @@ import { RestBaseService } from "./services/rest-base.service";
     FeatureOneModule,
     FeatureTwoModule,
   ],
-  providers: [{ 
-      provide: RestBaseService, 
-      useFactory: (http:Http) => new RestBaseService<string>(http, 'dummy'),
-      deps: [Http]
-    }],
+  providers: [
+    RestBaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
