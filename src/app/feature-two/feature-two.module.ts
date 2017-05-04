@@ -12,7 +12,16 @@ import { DummyTwoComponent } from './dummy-two/dummy-two.component';
     HttpModule
   ],
   declarations: [DummyTwoComponent],
-  exports: [DummyTwoComponent]
+  exports: [DummyTwoComponent],
+  providers: [
+    { 
+      provide: RestBaseService, 
+      useFactory: (http:Http) => new RestBaseService<Address>(http, 'http://127.0.0.1:4201/api/search?text=pa'),
+      deps: [Http]
+    }
+  ]
 })
 
-export class FeatureTwoModule {}
+export class FeatureTwoModule {
+  constructor(private restBaseService:RestBaseService<Address>) {}
+}

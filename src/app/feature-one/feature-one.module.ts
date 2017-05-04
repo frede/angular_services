@@ -12,7 +12,16 @@ import { DummyOneComponent } from './dummy-one/dummy-one.component';
     HttpModule
   ],
   declarations: [DummyOneComponent],
-  exports: [DummyOneComponent]
+  exports: [DummyOneComponent],
+  providers: [
+    { 
+      provide: RestBaseService, 
+      useFactory: (http:Http) => new RestBaseService<Contact>(http, 'http://127.0.0.1:4201/api/contacts'),
+      deps: [Http]
+    }
+  ]
 })
 
-export class FeatureOneModule {}
+export class FeatureOneModule {
+  constructor(private restBaseService:RestBaseService<Contact>) {}
+}

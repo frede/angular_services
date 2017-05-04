@@ -6,15 +6,9 @@ import { RestBaseService } from '../../services/rest-base.service';
 
 @Component({
   selector: 'app-dummy-two',
-  template: 'two',
-  providers: [
-    { 
-      provide: RestBaseService, 
-      useFactory: (http:Http) => new RestBaseService<Address>(http, 'http://127.0.0.1:4201/api/search?text=pa'),
-      deps: [Http]
-    }
-  ]
+  template: 'two'
 })
+
 export class DummyTwoComponent {
 
   constructor(private restBaseService:RestBaseService<Address>) { 
